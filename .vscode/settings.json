@@ -4,5 +4,10 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.inlayHints.enabled": "off",
-  "eslint.validate": ["javascript", "javascriptreact", "vue"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
+  "eslint.format.enable": true
 }
