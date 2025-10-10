@@ -3,16 +3,16 @@
 <div>
   <div class="top-row">
     <div class="top part">
-      <img v-bind:src="availableParts.heads[0].imageUrl" alt="head" />
-      <button class="prev-selector">&#9668;</button>
+      <img v-bind:src="availableParts.heads[selectedHeadIndex].imageUrl" alt="head" />
+      <button  v-on:click="selectPreviousHead()" class="prev-selector">&#9668;</button>
       <button v-on:click="selectNextHead()" class="next-selector">&#9658;</button>
     </div>
   </div>
   <div class="middle-row">
     <div class="left part">
-      <img v-bind:src="availableParts.arms[0].imageUrl" alt="left arm" />
-      <button class="prev-selector">&#9650;</button>
-      <button class="next-selector">&#9660;</button>
+      <img v-bind:src="availableParts.arms[selectedLeftArmIndex].imageUrl" alt="left arm" />
+      <button v-on:click="selectNextLeftArm()" class="prev-selector">&#9650;</button>
+      <button v-on:click="selectPreviousLeftArm()" class="next-selector">&#9660;</button>
     </div>
     <div class="center part">
       <img v-bind:src="availableParts.torsos[0].imageUrl" alt="torso" />
@@ -40,16 +40,53 @@
 <script>
 import parts from '../data/parts';
 
+function getPreviousValidIndex(index, length) {
+  const deprecatedIndex = index - 1;
+  return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
+}
+
+function getNextValidIndex(index, length) {
+  const incrementedIndex = index + 1;
+  return incrementedIndex > length - 1 ? 0 : incrementedIndex;
+}
+
 export default {
   name: 'RobotBuilder',
   data() {
     return {
       availableParts: parts,
+      selectedHeadIndex: 0,
+      selectedLeftArmIndex: 0,
+      selectedTorsoIndex: 0,
+      selectedRightArmIndex: 0,
+      selectedBaseIndex: 0,
     };
   },
   methods: {
     selectNextHead() {
-      console.log('selectNextHead called');
+      this.selectedHeadIndex = getNextValidIndex(
+        this.selectedHeadIndex,
+        this.availableParts.heads.length,
+      );
+    },
+    selectPreviousHead() {
+      this.selectedHeadIndex = getPreviousValidIndex(
+        this.selectedHeadIndex,
+        this.availableParts.heads.length,
+      );
+    },
+    selectNextLeftArm() {
+      this.selectedLeftArmIndex = getNextValidIndex(
+        this.selectedLeftArmIndex,
+        this.availableParts.arms.length,
+      );
+    },
+
+    selectPreviousLeftArm() {
+      this.selectedLeftArmIndex = getPreviousValidIndex(
+        this.selectedLeftArmIndex,
+        this.availableParts.arms.length,
+      );
     },
 
   },
