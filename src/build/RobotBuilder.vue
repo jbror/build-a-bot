@@ -87,6 +87,7 @@ export default {
       robot.torso.cost +
       robot.rightArm.cost +
       robot.base.cost;
+      this.cart.push({ ...robot, cost });
     },
     selectNextHead() {
       this.selectedHeadIndex = getNextValidIndex(
