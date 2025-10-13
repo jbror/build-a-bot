@@ -1,6 +1,5 @@
 <template>
-
-<div class="content">
+<div class ="content">
   <button class="add-to-cart" @click="addToCart()"> Add to Cart</button>
   <div class="top-row">
     <div class="top part">
@@ -38,8 +37,23 @@
     </div>
   </div>
 </div>
-
-
+<div>
+  <h1>Cart</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Robot</th>
+        <th class="cost">cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(robot, index) in cart" :key="index">
+      <td>{{ robot.head.title }} </td>
+      <td class="cost">{{ robot.cost }} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </template>
 
 <script>
@@ -65,6 +79,7 @@ export default {
       selectedTorsoIndex: 0,
       selectedRightArmIndex: 0,
       selectedBaseIndex: 0,
+      cart: [],
     };
   },
   computed: {
@@ -88,6 +103,7 @@ export default {
       robot.rightArm.cost +
       robot.base.cost;
       this.cart.push({ ...robot, cost });
+      console.log(this.cart.length);
     },
     selectNextHead() {
       this.selectedHeadIndex = getNextValidIndex(
@@ -295,6 +311,17 @@ width: 100%;
   font-size:16px;
 }
 
+td,
+th {
+  text-align: left;
+  padding: 5px;
+  padding-right: 20px;
+}
+
+
+.cost{
+  text-align: right;
+}
 
 
 </style>
