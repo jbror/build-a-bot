@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, reactive } from 'vue';
 import parts from '../data/parts';
 import { toCurrency } from '../shared/formatters';
 
@@ -79,7 +79,7 @@ const selectedLeftArmIndex = ref(0);
 const selectedTorsoIndex = ref(0);
 const selectedRightArmIndex = ref(0);
 const selectedBaseIndex = ref(0);
-const cart = [];
+const cart = reactive([]);
 
 
 const selectedRobot = computed(() => ({
@@ -94,7 +94,7 @@ const selectedRobot = computed(() => ({
 
 
 const addToCart = () => {
-  const robot = selectedRobot;
+  const robot = selectedRobot.value;
   const cost = robot.head.cost +
       robot.leftArm.cost +
       robot.torso.cost +
