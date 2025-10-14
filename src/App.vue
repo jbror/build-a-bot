@@ -17,13 +17,13 @@
 
 <script>
 // import HomePage from './Home/HomePage.vue';
-import RobotBuilder from './build/RobotBuilder.vue';
-
+// import RobotBuilder from './build/RobotBuilder.vue';
+import ProductSearch from './search/ProductSearch.vue';
 
 export default {
   name: 'App',
   components: {
-    RobotBuilder,
+    ProductSearch,
   },
 };
 </script>

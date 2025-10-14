@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { computed, ref, reactive } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import parts from '../data/parts';
 import { toCurrency } from '../shared/formatters';
 
@@ -79,8 +79,9 @@ const selectedLeftArmIndex = ref(0);
 const selectedTorsoIndex = ref(0);
 const selectedRightArmIndex = ref(0);
 const selectedBaseIndex = ref(0);
-const cart = reactive([]);
+const cart = ref([]);
 
+onMounted(() => console.log('On Mounted'));
 
 const selectedRobot = computed(() => ({
   head: availableParts.heads[selectedHeadIndex.value],
@@ -100,8 +101,8 @@ const addToCart = () => {
       robot.torso.cost +
       robot.rightArm.cost +
       robot.base.cost;
-  cart.push({ ...robot, cost });
-  console.log(cart.length);
+  cart.value.push({ ...robot, cost });
+  console.log(cart.value.length);
 };
 
 
