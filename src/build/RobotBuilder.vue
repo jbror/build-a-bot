@@ -59,6 +59,7 @@
 <script>
 import parts from '../data/parts';
 import { toCurrency } from '../shared/formatters';
+import createdHook from './created-hook-mixin';
 
 function getPreviousValidIndex(index, length) {
   const deprecatedIndex = index - 1;
@@ -72,6 +73,7 @@ function getNextValidIndex(index, length) {
 
 export default {
   name: 'RobotBuilder',
+  mixins: [createdHook],
   data() {
     return {
       availableParts: parts,
@@ -149,7 +151,7 @@ export default {
 
     selectNextRightArm() {
       this.selectedRightArmIndex = getNextValidIndex(
-        this.selectedRightArmIndex,
+        // this.selectedRightArmIndex,
         this.availableParts.arms.length,
       );
     },
