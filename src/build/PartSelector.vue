@@ -9,11 +9,11 @@
 
 <script setup>
 import { computed, ref } from 'vue';
-import availableParts from '../data/parts';
 
-const parts = availableParts.heads;
+
+const props = defineProps(['parts']);
 const selectedPartIndex = ref(0);
-const selectedPart = computed(() => parts[selectedPartIndex.value]);
+const selectedPart = computed(() => props.parts[selectedPartIndex.value]);
 
 function getPreviousValidIndex(index, length) {
   const deprecatedIndex = index - 1;
@@ -28,7 +28,7 @@ function getNextValidIndex(index, length) {
 const selectNextPart = () => {
   selectedPartIndex.value = getNextValidIndex(
     selectedPartIndex.value,
-    parts.length,
+    props.parts.length,
   );
   console.log(selectedPart.value);
 };
@@ -36,7 +36,7 @@ const selectNextPart = () => {
 const selectPreviousPart = () => {
   selectedPartIndex.value = getPreviousValidIndex(
     selectedPartIndex.value,
-    parts.length,
+    props.parts.length,
   );
 };
 </script>

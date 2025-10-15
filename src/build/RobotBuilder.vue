@@ -1,51 +1,49 @@
 <template>
-<div class ="content">
-  <button class="add-to-cart" @click="addToCart()"> Add to Cart</button>
-  <div class="top-row">
+  <div class="content">
+    <button class="add-to-cart" @click="addToCart()"> Add to Cart</button>
+    <div class="top-row">
       <div class="robot-name">
-        {{  selectedRobot.head.title  }}
+        {{ selectedRobot.head.title }}
         <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
+      </div>
+      <PartSelector :parts="availableParts.heads" />
     </div>
-    <PartSelector />
+    <div class="middle-row">
+      <PartSelector :parts="availableParts.arms" />
+      <PartSelector :parts="availableParts.torsos" />
+      <PartSelector :parts="availableParts.arms" />
+    </div>
+    <div class="bottom-row">
+      <PartSelector :parts="availableParts.bases" />
+    </div>
   </div>
-  <div class="middle-row">
-    <PartSelector />
-    <PartSelector />
-    <PartSelector />
+  <div>
+    <h1>Cart</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Robot</th>
+          <th class="cost">cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(robot, index) in cart" :key="index">
+          <td>{{ robot.head.title }} </td>
+          <td class="cost">{{ toCurrency(robot.cost) }} </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="bottom-row">
-   <PartSelector />
-  </div>
-</div>
-<div>
-  <h1>Cart</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Robot</th>
-        <th class="cost">cost</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(robot, index) in cart" :key="index">
-      <td>{{ robot.head.title }} </td>
-      <td class="cost">{{ toCurrency(robot.cost) }} </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 </template>
 
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-// import parts from '../data/parts';
+import parts from '../data/parts';
 import { toCurrency } from '../shared/formatters';
 import PartSelector from './PartSelector.vue';
 
 
-
-// const availableParts = parts;
-
+const availableParts = parts;
 const cart = ref([]);
 
 
@@ -65,17 +63,16 @@ const headBorderColor = computed(() => (selectedRobot.value.head.onSale ? 'red' 
 const addToCart = () => {
   const robot = selectedRobot.value;
   const cost = robot.head.cost +
-      robot.leftArm.cost +
-      robot.torso.cost +
-      robot.rightArm.cost +
-      robot.base.cost;
+    robot.leftArm.cost +
+    robot.torso.cost +
+    robot.rightArm.cost +
+    robot.base.cost;
   cart.value.push({ ...robot, cost });
   console.log(cart.value.length);
 };
 
 </script>
 <style lang="scss" scoped>
-
 .part {
   position: relative;
   width: 200px;
@@ -89,9 +86,10 @@ const addToCart = () => {
 
 .part {
   img {
-      width: 200px;
-    }
+    width: 200px;
+  }
 }
+
 .top-row {
   display: flex;
   justify-content: space-around;
@@ -190,27 +188,27 @@ const addToCart = () => {
 }
 
 .robot-name {
-position: absolute;
-top: -25px;
-text-align: center;
-width: 100%;
+  position: absolute;
+  top: -25px;
+  text-align: center;
+  width: 100%;
 }
 
 
-.sale{
+.sale {
   color: red;
 }
 
-.content  {
+.content {
   position: relative;
 }
 
 .add-to-cart {
   position: absolute;
   right: 30px;
-  width:220px;
-  padding:3px;
-  font-size:16px;
+  width: 220px;
+  padding: 3px;
+  font-size: 16px;
 }
 
 td,
@@ -221,9 +219,7 @@ th {
 }
 
 
-.cost{
+.cost {
   text-align: right;
 }
-
-
 </style>
