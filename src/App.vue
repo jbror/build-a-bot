@@ -11,7 +11,7 @@
   </header>
   <main>
   <!-- <HomePage msg="Welcome to Your Vue.js App"/> -->
-   <RobotBuilder />
+    <RobotBuilder />
   </main>
 </template>
 
@@ -44,6 +44,7 @@ body {
 </style>
 
 <style scoped>
+
 main {
 margin: 0 auto;
 padding: 30px;
