@@ -38,7 +38,7 @@ const selectNextPart = () => {
     selectedPartIndex.value,
     props.parts.length,
   );
-  console.log(selectedPart.value);
+  emit('partSelected', selectedPart);
 };
 
 const selectPreviousPart = () => {
