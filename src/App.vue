@@ -17,15 +17,17 @@
 
 <script>
 // import HomePage from './Home/HomePage.vue';
-// import RobotBuilder from './build/RobotBuilder.vue';
-import ProductSearch from './search/ProductSearch.vue';
+import RobotBuilder from './build/RobotBuilder.vue';
+// import ProductSearch from './search/ProductSearch.vue';
 
 export default {
   name: 'App',
   components: {
-    ProductSearch,
+    RobotBuilder,
   },
 };
+
+
 </script>
 
 <style>
@@ -34,16 +36,19 @@ export default {
 
 }
 body {
-background: linear-gradient(to bottom, #555, #999);
-background-attachment: fixed;
+  background: linear-gradient(to bottom, #555, #999);
+  background-attachment: fixed;
 
 }
 
+</style>
+
+<style scoped>
 main {
 margin: 0 auto;
 padding: 30px;
 background-color: white;
-width: 1400 px;
+width: 1400px;
 min-height: 300px;
 }
 
