@@ -11,7 +11,14 @@
 import { computed, ref } from 'vue';
 
 
-const props = defineProps(['parts', 'position']);
+const props = defineProps({
+  parts: { type: Array, required: true },
+  position: {
+    type: String,
+    required: true,
+    validator(value) { return ['left', 'right', 'top', 'center', 'bottom'].includes(value); },
+  },
+});
 const selectedPartIndex = ref(0);
 const selectedPart = computed(() => props.parts[selectedPartIndex.value]);
 

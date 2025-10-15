@@ -14,7 +14,7 @@
       <PartSelector :parts="availableParts.arms" position="right" />
     </div>
     <div class="bottom-row">
-      <PartSelector :parts="availableParts.bases" position="base" />
+      <PartSelector :parts="availableParts.bases" position="bottom" />
     </div>
   </div>
   <div>
