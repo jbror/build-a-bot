@@ -1,5 +1,6 @@
 <template>
   <div class="part" :class="position">
+    <div>User: {{ userName }}</div>
     <img :src="selectedPart.imageUrl" alt="part" />
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
@@ -8,8 +9,11 @@
 </template>
 
 <script setup>
-import { computed, ref, onUpdated } from 'vue';
+import {
+  computed, ref, onUpdated, inject,
+} from 'vue';
 
+const userName = inject('userName');
 
 const props = defineProps({
   parts: { type: Array, required: true },
