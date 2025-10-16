@@ -2,6 +2,8 @@
   <div class="content">
     <div class="preview">
       <CollapsibleSection>
+        <template v-slot:collapse>&#x25B2; Hide</template>
+        <template v-slot:expand>&#x25BC; Show</template>
         <div class="preview-content">
           <div class="top-row">
             <img :src="selectedRobot.head.imageUrl" alt="head" />
@@ -63,6 +65,7 @@ import { computed, onMounted, ref } from 'vue';
 import parts from '../data/parts';
 import { toCurrency } from '../shared/formatters';
 import PartSelector from './PartSelector.vue';
+import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 
 const availableParts = parts;
