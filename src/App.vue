@@ -6,9 +6,6 @@
           <img class="logo" src="./assets/build-a-bot-logo.png" alt="logo" />
           Build-a-Bot
         </li>
-        <li>
-          User: {{ userName }}
-        </li>
       </ul>
     </nav>
   </header>
