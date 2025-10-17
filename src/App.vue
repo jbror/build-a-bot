@@ -3,9 +3,20 @@
     <nav>
       <ul>
         <li class="nav-item">
-          <RouterLink :to="{ name: 'Home' }" class="nav-link">
+          <RouterLink :to="{ name: 'Home' }" class="nav-link" active-class="home-active">
             <img class="logo" src="./assets/build-a-bot-logo.png" alt="logo" />
             Build-a-Bot
+          </RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink :to="{ name: 'Build' }" class="nav-link">
+            Build
+          </RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink :to="{ name: 'Search' }" class="nav-link">
+
+            Search
           </RouterLink>
         </li>
       </ul>
@@ -81,5 +92,15 @@ ul {
   vertical-align: middle;
   height: 30px;
 
+}
+
+
+.active-link {
+  color: white;
+}
+
+.home-active {
+  color: white;
+  text-shadow: 2px 2px black;
 }
 </style>
