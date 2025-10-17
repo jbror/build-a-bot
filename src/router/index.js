@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../Home/HomePage.vue';
 import RobotBuilder from '../build/RobotBuilder.vue';
 import ProductSearch from '../search/ProductSearch.vue';
@@ -7,7 +7,7 @@ import PartInfo from '../parts/PartInfo.vue';
 
 export default createRouter({
   linkActiveClass: 'active-link',
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
