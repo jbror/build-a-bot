@@ -18,27 +18,42 @@
           </div>
         </div>
       </CollapsibleSection>
-      <button class="add-to-cart" @click="addToCart()"> Add to Cart</button>
+      <button type="button" class="add-to-cart" @click="addToCart()"> Add to Cart</button>
     </div>
     <div class="top-row">
       <div class="robot-name">
         {{ selectedRobot.head.title }}
         <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
       </div>
-      <PartSelector :parts="availableParts.heads" position="top" @partSelected="part =>
-        selectedRobot.head = part" />
+      <PartSelector
+        :parts="availableParts.heads"
+        position="top"
+        @partSelected="part =>
+          selectedRobot.head = part" />
     </div>
     <div class="middle-row">
-      <PartSelector :parts="availableParts.arms" position="left" @partSelected="part =>
-        selectedRobot.leftArm = part" />
-      <PartSelector :parts="availableParts.torsos" position="center" @partSelected="part =>
-        selectedRobot.torso = part" />
-      <PartSelector :parts="availableParts.arms" position="right" @partSelected="part =>
-        selectedRobot.rightArm = part" />
+      <PartSelector
+        :parts="availableParts.arms"
+        position="left"
+        @partSelected="part =>
+          selectedRobot.leftArm = part" />
+      <PartSelector
+        :parts="availableParts.torsos"
+        position="center"
+        @partSelected="part =>
+          selectedRobot.torso = part" />
+      <PartSelector
+        :parts="availableParts.arms"
+        position="right"
+        @partSelected="part =>
+          selectedRobot.rightArm = part" />
     </div>
     <div class="bottom-row">
-      <PartSelector :parts="availableParts.bases" position="bottom" @partSelected="part =>
-        selectedRobot.base = part" />
+      <PartSelector
+        :parts="availableParts.bases"
+        position="bottom"
+        @partSelected="part =>
+          selectedRobot.base = part" />
     </div>
   </div>
   <div>

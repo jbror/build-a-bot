@@ -27,7 +27,7 @@ export default createRouter({
       component: ProductSearch,
     },
     {
-      path: '/parts',
+      path: '/parts/:partType/:id',
       name: 'Parts',
       component: PartInfo,
     },

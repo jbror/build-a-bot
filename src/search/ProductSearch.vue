@@ -4,11 +4,11 @@
       <input placeholder="Enter Search Term" @input="searchTerm = $event.target.value" />
     </div>
     <div class="filters">
-      <div><button @click="applyFilters({ type: 'heads' })">Filter for Heads</button></div>
-      <div><button @click="applyFilters({ type: 'arms' })">Filter for Arms</button></div>
-      <div><button @click="applyFilters({ type: 'torsos' })">Filter for Torsos</button></div>
-      <div><button @click="applyFilters({ type: 'bases' })">Filter for Bases</button></div>
-      <div><button @click="clearFilters()">Clear Filters</button></div>
+      <div><button type="button" @click="applyFilters({ type: 'heads' })">Filter for Heads</button></div>
+      <div><button type="button" @click="applyFilters({ type: 'arms' })">Filter for Arms</button></div>
+      <div><button type="button" @click="applyFilters({ type: 'torsos' })">Filter for Torsos</button></div>
+      <div><button type="button" @click="applyFilters({ type: 'bases' })">Filter for Bases</button></div>
+      <div><button type="button" @click="clearFilters()">Clear Filters</button></div>
       <div>Filters: {{ filters }}</div>
     </div>
   </div>
@@ -25,9 +25,9 @@
     </ul>
   </div>
   <div>
-    <button @click="prevPage()" class="button-link">Previous Page</button>
+    <button type="button" @click="prevPage()" class="button-link">Previous Page</button>
     Showing {{ currentStartIndex }} to {{ currentEndIndex }} of {{ resultCount }} results
-    <button @click="nextPage()" class="button-link">Next Page</button>
+    <button type="button" @click="nextPage()" class="button-link">Next Page</button>
   </div>
 </template>
 

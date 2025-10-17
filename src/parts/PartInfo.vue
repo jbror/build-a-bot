@@ -1,10 +1,10 @@
 <template>
+  <div>
+    <h1>{{ part.title }}</h1>
     <div>
-        <h1>{{ part.title }}</h1>
-        <div>
-            {{ part.description }}
-        </div>
+      {{ part.description }}
     </div>
+  </div>
 </template>
 
 
