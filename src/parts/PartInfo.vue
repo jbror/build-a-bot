@@ -9,5 +9,15 @@
 
 
 <script setup>
-const part = { title: 'Part Title', description: 'Part Description' };
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+import parts from '../data/parts';
+
+const part = computed(() => {
+  const route = useRoute();
+  const { partType } = route.params;
+  const partId = route.params.id;
+  return parts[partType].find((p) => p.id === +partId);
+});
 </script>
