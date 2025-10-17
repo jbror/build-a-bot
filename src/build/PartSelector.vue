@@ -1,14 +1,22 @@
 <template>
   <div class="part" :class="position">
-    <router-link to="/parts">img :src="selectedPart.imageUrl" alt="part" /></router-link>
-    <button @click="selectPreviousPart()" class="prev-selector"></button>
-    <button @click="selectNextPart()" class="next-selector"></button>
+    <router-link
+      :to="{
+        name: 'Parts',
+        params: { partType: selectedPart.type, id: selectedPart.id },
+      }">
+      <img :src="selectedPart.imageUrl" alt="part" /></router-link>
+    <button type="button" @click="selectPreviousPart()" class="prev-selector" />
+    <button type="button" @click="selectNextPart()" class="next-selector" />
     <span class="sale" v-show="selectedPart.onSale">Sale!</span>
   </div>
 </template>
 
 <script setup>
 import { computed, ref, onUpdated } from 'vue';
+
+
+
 
 
 const props = defineProps({
@@ -23,9 +31,9 @@ const emit = defineEmits(['partSelected']);
 const selectedPartIndex = ref(0);
 const selectedPart = computed(() => props.parts[selectedPartIndex.value]);
 
-emit('partSelected', selectedPart);
+emit('partSelected', selectedPart.value);
 
-onUpdated(() => emit('partSelected', selectedPart));
+onUpdated(() => emit('partSelected', selectedPart.value));
 
 
 function getPreviousValidIndex(index, length) {
@@ -51,6 +59,8 @@ const selectPreviousPart = () => {
     props.parts.length,
   );
 };
+
+
 </script>
 
 <style scoped>
