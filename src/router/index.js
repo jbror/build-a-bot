@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import ShoppingCart from '../cart/ShoppingCart.vue';
 import HomePage from '../Home/HomePage.vue';
 import RobotBuilder from '../build/RobotBuilder.vue';
 import ProductSearch from '../search/ProductSearch.vue';
@@ -33,5 +34,11 @@ export default createRouter({
       props: true,
     },
 
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: ShoppingCart,
+      props: true,
+    },
   ],
 });

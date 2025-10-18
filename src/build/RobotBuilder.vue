@@ -66,7 +66,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(robot, index) in cart" :key="index">
+        <tr v-for="(robot, index) in cartStore.cart" :key="index">
           <td>{{ robot.head.title }} </td>
           <td class="cost">{{ toCurrency(robot.cost) }} </td>
         </tr>
@@ -83,8 +83,12 @@ import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 
+import { useCartStore } from '../stores/cartStore';
+
+const cartStore = useCartStore();
+
+
 const availableParts = parts;
-const cart = ref([]);
 
 
 
@@ -107,8 +111,7 @@ const addToCart = () => {
     robot.torso.cost +
     robot.rightArm.cost +
     robot.base.cost;
-  cart.value.push({ ...robot, cost });
-  console.log(cart.value.length);
+  cartStore.cart.push({ ...robot, cost });
 };
 
 </script>

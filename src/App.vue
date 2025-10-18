@@ -19,6 +19,11 @@
             Search
           </RouterLink>
         </li>
+        <li class="nav-item cart">
+          <RouterLink to="/cart" class="nav-link">
+            Cart
+          </RouterLink>
+        </li>
       </ul>
     </nav>
   </header>
@@ -87,6 +92,8 @@ ul {
   font-size: 22px;
   border-right: 1px solid #bbb;
 }
+
+.nav-item.cart {}
 
 .logo {
   vertical-align: middle;
