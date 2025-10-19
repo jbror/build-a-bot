@@ -93,7 +93,11 @@ ul {
   border-right: 1px solid #bbb;
 }
 
-.nav-item.cart {}
+.nav-item.cart {
+position: relative;
+margin-left: auto;
+border-right: none;
+}
 
 .logo {
   vertical-align: middle;

@@ -1,5 +1,5 @@
 export function toCurrency(amount) {
-  return `SEK${amount.toFixed(2)}`;
+  return `SEK: ${amount.toFixed(2)}:-`;
 }
 
 
