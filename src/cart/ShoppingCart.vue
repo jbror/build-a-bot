@@ -21,6 +21,10 @@
             {{ toCurrency(robot.cost) }}
           </td>
         </tr>
+        <tr class="total">
+          <td>Total </td>
+          <td> {{ toCurrency(cartStore.cartTotal) }} </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -55,4 +59,10 @@ th {
 .cost {
   text-align: right;
 }
+
+.total {
+  font-weight: bold;
+}
+
+
 </style>
